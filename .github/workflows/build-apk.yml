@@ -1,4 +1,3 @@
-
 name: Build Gestion PVC APK
 
 on:
@@ -23,15 +22,13 @@ jobs:
 
       - uses: android-actions/setup-android@v3
 
-      - name: Extraire le projet
-        run: |
-          unzip GestionPVC-Android-GitHub.zip -d source
+      - name: Extract project
+        run: unzip GestionPVC-Android-GitHub.zip -d source
 
-      - name: Compiler
-        run: |
-          gradle -p source/GestionPVC-Android assembleDebug
+      - name: Build APK
+        run: gradle -p source/GestionPVC-Android assembleDebug
 
-      - name: Récupérer APK
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: GestionPVC-APK
